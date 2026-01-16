@@ -15,8 +15,8 @@ inputs:
     required: false
     default: "false"
   token:
-    description: "GitHub token with actions:write permission (defaults to GITHUB_TOKEN)"
-    required: false
+    description: "GitHub token with actions:write permission"
+    required: true
 
 outputs:
   deleted_count:

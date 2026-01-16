@@ -7,18 +7,18 @@ A GitHub Action that automatically evicts the oldest artifacts from your reposit
 ```yaml
 - uses: intercreate/artifact-eviction-action@v1
   with:
-    max_size_gb: "10"
+    token: ${{ github.token }}
 ```
 
 No checkout required - the action is self-contained.
 
 ## Inputs
 
-| Input         | Description                                  | Required | Default        |
-| ------------- | -------------------------------------------- | -------- | -------------- |
-| `max_size_gb` | Maximum total artifact storage size in GB    | No       | `20`           |
-| `dry_run`     | Preview deletions without actually deleting  | No       | `false`        |
-| `token`       | GitHub token with `actions:write` permission | No       | `GITHUB_TOKEN` |
+| Input         | Description                                  | Required | Default |
+| ------------- | -------------------------------------------- | -------- | ------- |
+| `token`       | GitHub token with `actions:write` permission | Yes      | —       |
+| `max_size_gb` | Maximum total artifact storage size in GB    | No       | `20`    |
+| `dry_run`     | Preview deletions without actually deleting  | No       | `false` |
 
 ## Outputs
 
@@ -66,6 +66,7 @@ jobs:
     steps:
       - uses: intercreate/artifact-eviction-action@v1
         with:
+          token: ${{ github.token }}
           max_size_gb: ${{ inputs.max_size_gb }}
           dry_run: ${{ inputs.dry_run }}
 ```
@@ -87,18 +88,19 @@ jobs:
     steps:
       - uses: intercreate/artifact-eviction-action@v1
         with:
+          token: ${{ github.token }}
           max_size_gb: "20"
 ```
 
-### Using a Custom Token
+### Using a Personal Access Token
 
 If you need to clean artifacts across multiple repositories, use a PAT with the appropriate permissions:
 
 ```yaml
 - uses: intercreate/artifact-eviction-action@v1
   with:
-    max_size_gb: "10"
     token: ${{ secrets.ARTIFACT_CLEANUP_TOKEN }}
+    max_size_gb: "10"
 ```
 
 ## How It Works

@@ -31755,13 +31755,7 @@ const createCleanupSummary = (initial, results, retained) => {
 
 const parseConfig = () => {
     try {
-        const token = core.getInput("token") || process.env["GITHUB_TOKEN"];
-        if (!token) {
-            return {
-                ok: false,
-                error: new Error("No token provided. Set the 'token' input or ensure GITHUB_TOKEN is available."),
-            };
-        }
+        const token = core.getInput("token", { required: true });
         const repository = process.env["GITHUB_REPOSITORY"];
         const maxSizeGBInput = core.getInput("max_size_gb");
         const dryRunInput = core.getInput("dry_run");
