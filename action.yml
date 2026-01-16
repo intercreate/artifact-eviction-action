@@ -29,5 +29,5 @@ outputs:
     description: "Whether storage was over the limit before cleanup"
 
 runs:
-  using: "node22"
+  using: "node24"
   main: "dist/index.js"
