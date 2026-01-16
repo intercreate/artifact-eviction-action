@@ -6,16 +6,14 @@ branding:
   color: "orange"
 
 inputs:
-  max_size_gb:
-    description: "Maximum total artifact storage size in GB"
-    required: false
-    default: "20"
-  dry_run:
-    description: "Preview deletions without actually deleting"
-    required: false
-    default: "false"
   token:
     description: "GitHub token with actions:write permission"
+    required: true
+  max_size_gb:
+    description: "Maximum total artifact storage size in GB"
+    required: true
+  dry_run:
+    description: "Preview deletions without actually deleting (true/false)"
     required: true
 
 outputs:

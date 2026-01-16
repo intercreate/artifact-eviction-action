@@ -18,10 +18,10 @@ import {
 const parseConfig = (): Result<Config> => {
   try {
     const token = core.getInput("token", { required: true });
+    const maxSizeGBInput = core.getInput("max_size_gb", { required: true });
+    const dryRunInput = core.getInput("dry_run", { required: true });
 
     const repository = process.env["GITHUB_REPOSITORY"];
-    const maxSizeGBInput = core.getInput("max_size_gb");
-    const dryRunInput = core.getInput("dry_run");
 
     if (!repository) {
       return { ok: false, error: new Error("GITHUB_REPOSITORY is not set") };
