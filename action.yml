@@ -1,0 +1,33 @@
+name: "Artifact Eviction"
+description: "Evict oldest GitHub Actions artifacts to stay under storage limits (FIFO)"
+
+branding:
+  icon: "trash-2"
+  color: "orange"
+
+inputs:
+  max_size_gb:
+    description: "Maximum total artifact storage size in GB"
+    required: false
+    default: "20"
+  dry_run:
+    description: "Preview deletions without actually deleting"
+    required: false
+    default: "false"
+  token:
+    description: "GitHub token with actions:write permission (defaults to GITHUB_TOKEN)"
+    required: false
+
+outputs:
+  deleted_count:
+    description: "Number of artifacts deleted"
+  freed_gb:
+    description: "Storage freed in GB"
+  final_size_gb:
+    description: "Final storage size in GB"
+  was_over_limit:
+    description: "Whether storage was over the limit before cleanup"
+
+runs:
+  using: "node22"
+  main: "dist/index.js"

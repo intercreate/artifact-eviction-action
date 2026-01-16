@@ -1,0 +1,2 @@
+node_modules/
+# DO NOT ignore dist/ - it must be committed for the action to work

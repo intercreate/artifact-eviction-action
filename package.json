@@ -1,0 +1,33 @@
+{
+  "name": "artifact-eviction-action",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist --source-map --license licenses.txt",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "checks": "npm run typecheck && npm run lint && npm run format && npm run test"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@vercel/ncc": "^0.38.3",
+    "eslint": "^9.18.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.20.0",
+    "vitest": "^3.0.0"
+  }
+}
